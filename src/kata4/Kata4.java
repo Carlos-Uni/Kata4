@@ -9,12 +9,27 @@ import java.util.List;
 import view.HistogramDisplay;
 
 public class Kata4 {
+    
+    static List<Mail> listMails;
+    static Histogram c;
     public static void main(String[] args) throws IOException {
+        input();
+        process();
+        output();
+    }
+    
+     public static void input() throws IOException{
         MailListReader a = new MailListReader();
-        List<Mail> listMails = a.read("C:\\Users\\charl\\Documents\\NetBeansProjects\\Kata4\\emails.txt");
+        listMails = a.read("C:\\Users\\charl\\Documents\\NetBeansProjects\\Kata4\\emails.txt");
+    }
+    
+    public static void process(){
         MailHistogramBuilder b = new MailHistogramBuilder();
-        Histogram c = b.build(listMails);
+        c = b.build(listMails);
+
+    }
+    
+    public static void output(){
         new HistogramDisplay(c).execute();
     }
-
 }
